@@ -26,20 +26,22 @@ namespace TallerIUJO01
 			Console.WriteLine(string.Format("El ID llamado {0} del usuario {1} con la tarea {2} tiene nota de {3}", id, tarea, nombre, nota));
 
 			//flujo en archivos			
+			
 			string rutaraiz = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "DATOSIUJO");
-			string archivotexto = Path.Combine(rutaraiz, "Notas.txt");
-			Console.WriteLine(archivotexto);
+			string rutareporte = Path.Combine(rutaraiz, "Reportes");
 			
 			
-			if (Directory.Exists(rutaraiz)) {
-				Directory.CreateDirectory(rutaraiz);
+			
+			if (Directory.Exists(rutareporte)) {
+				Directory.CreateDirectory(rutareporte);
 				Console.WriteLine("directorio creado correctamente");
 				
 			}
-			string archivotexto = Path.Combine(rutaraiz, "notas.txt");
+			string archivotexto = Path.Combine(rutareporte, "notas.txt");
 			using (StreamWriter sw = new StreamWriter(archivotexto,true))
 			{
-				sw.WriteLine(string.Format("ID : {0}, nota {1} Fecha:{yyyy-MM-dd HH:mm}", id, nota, DateTime.now));
+				sw.WriteLine(string.Format("ID : {0}, nota {1} {2}Fecha:{3: yyyy-MM-dd HH:mm}", id, nota, tarea, DateTime.Now));
+				Console.WriteLine("reporte estudiante realizado");
 			
 			
 			}
