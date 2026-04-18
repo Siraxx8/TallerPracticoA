@@ -97,8 +97,8 @@ namespace TallerIUJO01
 			//DESAFIO 2
 			
 			// Se usa FileStream para manejar la imagen byte a byte
-            string rutaOrigen = Path.Combine(rutaraiz, "avatar.jpg");
-            string rutaDestino = Path.Combine(rutaraiz, "respaldo.jpg");
+            string rutaOrigen = @"C:\Users\Sira\Pictures\pruebajpg\avatar.jpg";
+            string rutaDestino = "respaldo.jpg";
 
           	if (File.Exists(rutaOrigen)) { 
                 using (FileStream fsorigen = new FileStream(rutaOrigen, FileMode.Open, FileAccess.Read)) 
@@ -110,7 +110,7 @@ namespace TallerIUJO01
                      	fsdestino.Write(buffer, 0, bytesLeidos); 
                     }
                 }
-                Console.WriteLine("> Imagen clonada exitosamente via FileStream.");
+                Console.WriteLine("-Imagen clonada exitosamente via FileStream.");
             }
             
             //DESAFIO 3
