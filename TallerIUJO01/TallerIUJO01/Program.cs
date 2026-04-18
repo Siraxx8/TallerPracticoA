@@ -11,11 +11,13 @@ namespace TallerIUJO01
 		{
 			Console.WriteLine("***Taller 01***");
 			
-			//1. el dato del usuario
+			//el dato del usuario
+			//registro desordenado
 			string registroUsuario = "		ID_777;		Jose Sira;		EVALUACION;		95;\n" ;
 			Console.WriteLine(registroUsuario);
 			
 			//registro limpio del usuario
+			//registro ordenado
 			string registrolimpio = registroUsuario.Trim().ToUpper();
 			Console.WriteLine(registrolimpio);
 			
@@ -44,7 +46,7 @@ namespace TallerIUJO01
 			using (StreamWriter sw = new StreamWriter(archivotexto, true)){
 				
 				sw.WriteLine(string.Format("ID: {0} | Estudiante: {1} | Nota: {2} | Tarea: {3} | Fecha: {4}", id, nombre, nota, tarea, DateTime.Now));
-				Console.WriteLine("reporte estudiante realizado.\n");
+				Console.WriteLine("-reporte estudiante realizado.\n");
 			}
 			
 			//Persistencia binaria "fileStream"
@@ -53,7 +55,7 @@ namespace TallerIUJO01
 				
 				byte[] bytesID = Encoding.UTF8.GetBytes(id + "|");
 				fs.Write(bytesID, 0, bytesID.Length);
-				Console.WriteLine("Auditoría binaria creada.\n");
+				Console.WriteLine("-Auditoría binaria creada.\n");
 			}
 			
 			//Inspección de metadatos "fileInfo"
@@ -70,7 +72,7 @@ namespace TallerIUJO01
  			}
 
 			
-			//DESAFIOS
+			/*---DESAFIOS---*/
 			
 			//DESAFIO 1
 			
@@ -89,27 +91,44 @@ namespace TallerIUJO01
    			using (StreamWriter sw = new StreamWriter(rutaseguridad, true)) {
         	sw.WriteLine("Clave Débil detectada");
     		}
-	    		Console.WriteLine("\nAviso de seguridad generado.");
+	    		Console.WriteLine("\n-Aviso de seguridad generado.");
 			}
 			
 			//DESAFIO 2
 			
-			// Abrimos flujos de bytes para origen y destino 
-			using (FileStream origen = new FileStream("avatar.jpg", FileMode.Open, FileAccess.Read))
-			using (FileStream destino = new FileStream("respaldo.jpg", FileMode.Create, FileAccess.Write)) {
-    
-   			// Creamos un buffer para no saturar la RAM 
-    			byte[] buffer = new byte[1024];
-    			int bytesLeidos;
-    		// Leemos y escribimos hasta que no queden bytes 
-    			while ((bytesLeidos = origen.Read(buffer, 0, buffer.Length)) > 0) {
-       		destino.Write(buffer, 0, bytesLeidos);
-    				}
-			}
-			Console.WriteLine("Imagen clonada exitosamente.");
-			
-			
-			
+			// Se usa FileStream para manejar la imagen byte a byte
+            string rutaOrigen = Path.Combine(rutaraiz, "avatar.jpg");
+            string rutaDestino = Path.Combine(rutaraiz, "respaldo.jpg");
+
+          	if (File.Exists(rutaOrigen)) { 
+                using (FileStream fsorigen = new FileStream(rutaOrigen, FileMode.Open, FileAccess.Read)) 
+                using (FileStream fsdestino = new FileStream(rutaDestino, FileMode.Create, FileAccess.Write)) { 
+                   
+                   byte[] buffer = new byte[1024]; 
+                    int bytesLeidos;
+                    while ((bytesLeidos = fsorigen.Read(buffer, 0, buffer.Length)) > 0) { 
+                     	fsdestino.Write(buffer, 0, bytesLeidos); 
+                    }
+                }
+                Console.WriteLine("> Imagen clonada exitosamente via FileStream.");
+            }
+            
+            //DESAFIO 3
+            
+            //Buscando archivos pesados
+            Console.WriteLine("\n-- Escaneando archivos pesados en Reportes...");
+            string[] listaArchivos = Directory.GetFiles(rutareporte); 
+			if (listaArchivos == null)
+				return;
+
+            foreach (string item in listaArchivos) {
+               		FileInfo infoarchivo = new FileInfo(item); 
+                	// 5KB son 5120 bytes 
+             		if (infoarchivo.Length > 5120) { 
+                    Console.WriteLine("Eliminando {0} por exceso de peso ({1} bytes)", infoarchivo.Name, infoarchivo.Length);
+                    infoarchivo.Delete(); 
+                }
+            }
 			
 			Console.Write("\nPRESIONA CUALQUIER TECLA PARA SALIR. . .");
 			Console.ReadKey(true);

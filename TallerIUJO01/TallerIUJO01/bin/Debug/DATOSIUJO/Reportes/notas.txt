@@ -1,4 +1,3 @@
-﻿ID: ID_777 | Estudiante: JOSE SIRA | Nota: 95 | Tarea: EVALUACION | Fecha: 18/4/2026 12:38:45 p. m.
-ID: ID_777 | Estudiante: JOSE SIRA | Nota: 95 | Tarea: EVALUACION | Fecha: 18/4/2026 12:38:53 p. m.
-ID: ID_777 | Estudiante: JOSE SIRA | Nota: 95 | Tarea: EVALUACION | Fecha: 18/4/2026 12:42:34 p. m.
-ID: ID_777 | Estudiante: JOSE SIRA | Nota: 95 | Tarea: EVALUACION | Fecha: 18/4/2026 12:43:42 p. m.
+ID: ID_777 | Estudiante: JOSE SIRA | Nota: 95 | Tarea: EVALUACION | Fecha: 18/4/2026 1:16:12 p. m.
+ID: ID_777 | Estudiante: JOSE SIRA | Nota: 95 | Tarea: EVALUACION | Fecha: 18/4/2026 1:16:30 p. m.
+ID: ID_777 | Estudiante: JOSE SIRA | Nota: 95 | Tarea: EVALUACION | Fecha: 18/4/2026 1:18:26 p. m.
