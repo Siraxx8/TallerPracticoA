@@ -4,3 +4,9 @@ C:\Users\usuario\Documents\TallerSeccionA\TallerIUJO01\TallerIUJO01\bin\Debug\Ta
 C:\Users\usuario\Documents\TallerSeccionA\TallerIUJO01\TallerIUJO01\obj\Debug\TallerIUJO01.csprojResolveAssemblyReference.cache
 C:\Users\usuario\Documents\TallerSeccionA\TallerIUJO01\TallerIUJO01\obj\Debug\TallerIUJO01.exe
 C:\Users\usuario\Documents\TallerSeccionA\TallerIUJO01\TallerIUJO01\obj\Debug\TallerIUJO01.pdb
+C:\Users\Sira\Documents\TALLERIUJO01\TallerIUJO01\TallerIUJO01\bin\Debug\TallerIUJO01.exe.config
+C:\Users\Sira\Documents\TALLERIUJO01\TallerIUJO01\TallerIUJO01\bin\Debug\TallerIUJO01.exe
+C:\Users\Sira\Documents\TALLERIUJO01\TallerIUJO01\TallerIUJO01\bin\Debug\TallerIUJO01.pdb
+C:\Users\Sira\Documents\TALLERIUJO01\TallerIUJO01\TallerIUJO01\obj\Debug\TallerIUJO01.csprojResolveAssemblyReference.cache
+C:\Users\Sira\Documents\TALLERIUJO01\TallerIUJO01\TallerIUJO01\obj\Debug\TallerIUJO01.exe
+C:\Users\Sira\Documents\TALLERIUJO01\TallerIUJO01\TallerIUJO01\obj\Debug\TallerIUJO01.pdb
