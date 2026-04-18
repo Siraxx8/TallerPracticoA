@@ -59,34 +59,54 @@ namespace TallerIUJO01
 			//Inspección de metadatos "fileInfo"
 			FileInfo info = new FileInfo(archivotexto);
 			Console.WriteLine("[ESTADÍSTICAS] El archivo de notas pesa: {0} bytes", info.Length);
-			// 7. LECTURA SECUENCIAL (StreamReader)
- 			Console.WriteLine("\n>>> Contenido actual del Reporte:");
+			
+			//Lectura secuencial "StreamReader"
+ 			Console.WriteLine("\n----Contenido actual del Reporte:---");
  			using (StreamReader sr = new StreamReader(archivotexto)) {
- 			string linea;
+ 				string linea;
  			while ((linea = sr.ReadLine()) != null) {
- 			Console.WriteLine(" LÍNEA: " + linea);
- 			}
+ 				Console.WriteLine(" LÍNEA: " + linea);
+ 				}
  			}
 
 			
-			//Desafios
+			//DESAFIOS
 			
-			//desafio#1
-			// Recibe una cadena: usuario;clave [cite: 102]
-			string usuarioclave = "Josesira;admin123"; 
+			//DESAFIO 1
+			
+			// Recibe una cadena: usuario;clave
+			string usuarioyclave = "Josesira;admin123"; 
 
-			// 1. Separamos el usuario de la clave usando Split [cite: 13, 103]
-			string[] separador = usuarioclave.Split(';');
+			//Separamos el usuario de la clave usando Split 
+			string[] separador = usuarioyclave.Split(';');
 			string clave = separador[1];
 
-			// 2. Verificamos si contiene la secuencia "123" [cite: 13, 103]
+			//Verificamos si contiene la secuencia "123" 
+			string rutaseguridad = Path.Combine(rutareporte, "seguridad.txt");
 			if (clave.Contains("123")) {
-    		// 3. Persistencia de aviso con StreamWriter [cite: 39, 103]
-   			using (StreamWriter sw = new StreamWriter("seguridad.txt", true)) {
+				
+    		//Persistencia de aviso con StreamWriter 
+   			using (StreamWriter sw = new StreamWriter(rutaseguridad, true)) {
         	sw.WriteLine("Clave Débil detectada");
     		}
-	    	Console.WriteLine("Aviso de seguridad generado.");
+	    		Console.WriteLine("\nAviso de seguridad generado.");
 			}
+			
+			//DESAFIO 2
+			
+			// Abrimos flujos de bytes para origen y destino 
+			using (FileStream origen = new FileStream("avatar.jpg", FileMode.Open, FileAccess.Read))
+			using (FileStream destino = new FileStream("respaldo.jpg", FileMode.Create, FileAccess.Write)) {
+    
+   			// Creamos un buffer para no saturar la RAM 
+    			byte[] buffer = new byte[1024];
+    			int bytesLeidos;
+    		// Leemos y escribimos hasta que no queden bytes 
+    			while ((bytesLeidos = origen.Read(buffer, 0, buffer.Length)) > 0) {
+       		destino.Write(buffer, 0, bytesLeidos);
+    				}
+			}
+			Console.WriteLine("Imagen clonada exitosamente.");
 			
 			
 			
