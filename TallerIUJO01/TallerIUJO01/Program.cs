@@ -59,11 +59,39 @@ namespace TallerIUJO01
 			//Inspección de metadatos "fileInfo"
 			FileInfo info = new FileInfo(archivotexto);
 			Console.WriteLine("[ESTADÍSTICAS] El archivo de notas pesa: {0} bytes", info.Length);
+			// 7. LECTURA SECUENCIAL (StreamReader)
+ 			Console.WriteLine("\n>>> Contenido actual del Reporte:");
+ 			using (StreamReader sr = new StreamReader(archivotexto)) {
+ 			string linea;
+ 			while ((linea = sr.ReadLine()) != null) {
+ 			Console.WriteLine(" LÍNEA: " + linea);
+ 			}
+ 			}
+
+			
+			//Desafios
+			
+			//desafio#1
+			// Recibe una cadena: usuario;clave [cite: 102]
+			string usuarioclave = "Josesira;admin123"; 
+
+			// 1. Separamos el usuario de la clave usando Split [cite: 13, 103]
+			string[] separador = usuarioclave.Split(';');
+			string clave = separador[1];
+
+			// 2. Verificamos si contiene la secuencia "123" [cite: 13, 103]
+			if (clave.Contains("123")) {
+    		// 3. Persistencia de aviso con StreamWriter [cite: 39, 103]
+   			using (StreamWriter sw = new StreamWriter("seguridad.txt", true)) {
+        	sw.WriteLine("Clave Débil detectada");
+    		}
+	    	Console.WriteLine("Aviso de seguridad generado.");
+			}
 			
 			
 			
 			
-			Console.Write("Press any key to continue . . . ");
+			Console.Write("\nPRESIONA CUALQUIER TECLA PARA SALIR. . .");
 			Console.ReadKey(true);
 		}
 	}
